@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naeema Begum · Software Engineering Portfolio</title>
+
+  <!-- Google Fonts: Inter (body) + Lora (italic accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ============================================================
+       1. RESET & GLOBAL
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f6fc;
+      color: #0b1a2f;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+       2. CSS VARIABLES
+    ============================================================ */
+    :root {
+      --teal: #2d7a7a;
+      --teal-dark: #226363;
+      --teal-light: #4a9c9c;
+      --teal-soft: #e2f0f0;
+      --teal-glow: rgba(45, 122, 122, 0.18);
+
+      --navy: #0b1a2f;
+      --navy-soft: #1d2b42;
+      --navy-muted: #4a5c72;
+
+      --bg-light: #f0f6fc;
+      --bg-white: #ffffff;
+
+      --shadow-sm: 0 10px 25px -8px rgba(11, 26, 47, 0.06),
+                   0 6px 12px -6px rgba(11, 26, 47, 0.04);
+      --shadow-hover: 0 24px 40px -14px rgba(45, 122, 122, 0.22);
+
+      --radius-card: 24px;
+      --radius-sm: 16px;
+      --radius-pill: 40px;
+
+      --transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       3. TYPOGRAPHY
+    ============================================================ */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    .section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-alt {
+      background-color: var(--bg-white);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.3rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 14px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--teal);
+    }
+
+    .section-subtitle {
+      margin-top: 16px;
+      color: var(--navy-muted);
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.05rem;
+    }
+
+    .italic-accent {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       4. BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--teal);
+      color: #ffffff;
+      box-shadow: 0 12px 24px -10px rgba(45, 122, 122, 0.5);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--teal-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 32px -12px rgba(45, 122, 122, 0.55);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--teal-soft);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -10px rgba(45, 122, 122, 0.25);
+    }
+
+    /* ============================================================
+       5. NAVBAR
+    ============================================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background-color: rgba(240, 246, 252, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(45, 122, 122, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--teal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--navy-soft);
+      position: relative;
+      padding-bottom: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--teal);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================================
+       6. HERO SECTION
+    ============================================================ */
+    .hero {
+      padding: 60px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -160px;
+      right: -160px;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 122, 122, 0.12) 0%, rgba(45, 122, 122, 0) 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 1 1 520px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--teal-soft);
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.4px;
+      margin-bottom: 22px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+    }
+
+    .hero-content h1 .first-name {
+      color: var(--navy);
+    }
+
+    .hero-content h1 .last-name {
+      color: var(--teal);
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--navy-soft);
+      margin-bottom: 26px;
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--navy-muted);
+      max-width: 540px;
+      margin-bottom: 36px;
+    }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      position: relative;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-number span {
+      color: var(--teal);
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--navy-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Hero Avatar */
+    .hero-image {
+      flex: 0 1 340px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-frame {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, var(--teal-soft) 0%, #cde6e6 55%, #d9ecec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 6px solid var(--bg-white);
+      box-shadow: 0 40px 60px -24px rgba(45, 122, 122, 0.35),
+                  0 0 0 12px rgba(45, 122, 122, 0.05);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .avatar-frame:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    .avatar-frame i {
+      font-size: 8.5rem;
+      color: var(--teal);
+      opacity: 0.85;
+    }
+
+    /* ============================================================
+       7. ABOUT SECTION
+    ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--navy-soft);
+      margin-bottom: 20px;
+    }
+
+    .about-text strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .about-meta {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      color: var(--navy-soft);
+    }
+
+    .about-meta i {
+      color: var(--teal);
+      font-size: 1.1rem;
+    }
+
+    /* Education card */
+    .edu-card {
+      background-color: var(--bg-white);
+      border-radius: var(--radius-card);
+      padding: 32px 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(45, 122, 122, 0.1);
+      transition: var(--transition);
+    }
+
+    .edu-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .edu-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .edu-card h3 i {
+      color: var(--teal);
+    }
+
+    .edu-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background-color: var(--teal-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.3rem;
+    }
+
+    .edu-details h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .edu-details p {
+      font-size: 0.92rem;
+      color: var(--navy-muted);
+    }
+
+    /* ============================================================
+       8. SKILLS SECTION
+    ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .skill-category {
+      background-color: var(--bg-white);
+      border-radius: var(--radius-card);
+      padding: 30px 26px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(45, 122, 122, 0.08);
+      transition: var(--transition);
+    }
+
+    .skill-category:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+      border-color: rgba(45, 122, 122, 0.22);
+    }
+
+    .skill-category h3 {
+      font-size: 1.12rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-category h3 i {
+      color: var(--teal);
+      width: 22px;
+      text-align: center;
+      font-size: 1.15rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-tag {
+      background-color: var(--teal-soft);
+      color: #1c5c5c;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      transition: var(--transition);
+    }
+
+    .skill-tag:hover {
+      background-color: var(--teal);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       9. PROJECTS SECTION
+    ============================================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background-color: var(--bg-white);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(45, 122, 122, 0.08);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-8px);
+      border-color: rgba(45, 122, 122, 0.2);
+    }
+
+    .project-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background-color: var(--teal-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.55rem;
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-icon {
+      background-color: var(--teal);
+      color: #ffffff;
+      transform: rotate(-4deg) scale(1.04);
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--navy-muted);
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      background-color: #e9f0f7;
+      color: #1b3f5c;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.2px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 20px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--teal);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background-color: var(--teal);
+      transition: var(--transition);
+    }
+
+    .project-links a:hover {
+      color: var(--teal-dark);
+    }
+
+    .project-links a:hover::after {
+      width: 100%;
+    }
+
+    .project-links a i {
+      font-size: 1rem;
+    }
+
+    .project-links .no-link {
+      color: var(--navy-muted);
+      font-weight: 500;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ============================================================
+       10. SERVICES SECTION
+    ============================================================ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: var(--bg-white);
+      border-radius: var(--radius-card);
+      padding: 36px 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(45, 122, 122, 0.08);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 122, 122, 0.08) 0%, rgba(45, 122, 122, 0) 70%);
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .service-card:hover::after {
+      transform: scale(1.4);
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-8px);
+      border-color: rgba(45, 122, 122, 0.25);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background-color: var(--teal-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      background-color: var(--teal);
+      color: #ffffff;
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .service-sub {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--navy-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       11. CONTACT SECTION
+    ============================================================ */
+    .contact-wrapper {
+      background-color: var(--bg-white);
+      border-radius: 36px;
+      padding: 56px 52px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(45, 122, 122, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 60px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+    }
+
+    .contact-info > p {
+      color: var(--navy-muted);
+      margin-bottom: 34px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      font-size: 0.98rem;
+      color: var(--navy-soft);
+    }
+
+    .contact-detail:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-detail .icon-box {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background-color: var(--teal-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.15rem;
+      transition: var(--transition);
+    }
+
+    .contact-detail:hover .icon-box {
+      background-color: var(--teal);
+      color: #ffffff;
+    }
+
+    .contact-detail a {
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .contact-detail a:hover {
+      color: var(--teal);
+    }
+
+    /* Contact form */
+    .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy-soft);
+      margin-bottom: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid #d7e2ed;
+      background-color: #fafdff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--navy);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #92a4b8;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--teal);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 4px var(--teal-glow);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+      border: none;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #7a8fa6;
+      margin-top: 14px;
+    }
+
+    /* ============================================================
+       12. FOOTER
+    ============================================================ */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(45, 122, 122, 0.14);
+      margin-top: 20px;
+    }
+
+    .footer p {
+      font-size: 0.9rem;
+      color: var(--navy-muted);
+    }
+
+    .footer p + p {
+      margin-top: 8px;
+      font-size: 0.84rem;
+    }
+
+    .footer i {
+      color: var(--teal);
+      margin: 0 3px;
+    }
+
+    /* ============================================================
+       13. RESPONSIVE — TABLET LANDSCAPE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+
+      .hero-grid {
+        gap: 40px;
+      }
+
+      .avatar-frame {
+        width: 280px;
+        height: 280px;
+      }
+
+      .avatar-frame i {
+        font-size: 7rem;
+      }
+
+      .about-grid {
+        gap: 36px;
+      }
+
+      .contact-wrapper {
+        padding: 44px 36px;
+        gap: 40px;
+      }
+    }
+
+    /* ============================================================
+       14. RESPONSIVE — TABLET PORTRAIT
+    ============================================================ */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ============================================================
+       15. RESPONSIVE — MOBILE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .section {
+        padding: 66px 0;
+      }
+
+      .section-title {
+        margin-bottom: 44px;
+      }
+
+      .section-title h2 {
+        font-size: 1.95rem;
+      }
+
+      /* Nav: hide links, keep logo */
+      .nav-links {
+        display: none;
+      }
+
+      /* Hero: stack vertically */
+      .hero {
+        padding: 40px 0 66px;
+      }
+
+      .hero-grid {
+        flex-direction: column-reverse;
+        gap: 44px;
+        text-align: center;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-stats {
+        justify-content: center;
+        gap: 28px;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .avatar-frame {
+        width: 240px;
+        height: 240px;
+      }
+
+      .avatar-frame i {
+        font-size: 6rem;
+      }
+    }
+
+    /* ============================================================
+       16. RESPONSIVE — SMALL MOBILE
+    ============================================================ */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .section-title h2 {
+        font-size: 1.65rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-bio {
+        font-size: 0.95rem;
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .stat-number {
+        font-size: 1.7rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        padding: 12px 22px;
+        font-size: 0.87rem;
+      }
+
+      .avatar-frame {
+        width: 200px;
+        height: 200px;
+      }
+
+      .avatar-frame i {
+        font-size: 5rem;
+      }
+
+      .edu-card {
+        padding: 26px 22px;
+      }
+
+      .skill-category {
+        padding: 24px 20px;
+      }
+
+      .project-card {
+        padding: 26px 22px;
+      }
+
+      .service-card {
+        padding: 28px 22px;
+      }
+
+      .contact-wrapper {
+        padding: 32px 22px;
+        border-radius: 26px;
+      }
+
+      .contact-info h3 {
+        font-size: 1.4rem;
+      }
+
+      .contact-detail {
+        font-size: 0.9rem;
+        gap: 12px;
+      }
+
+      .contact-detail .icon-box {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">Naeema<span>.</span></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <!-- Left: content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-graduation-cap"></i>
+            BSc Software Engineering · 6th Semester
+          </div>
+
+          <h1>
+            <span class="first-name">Naeema</span>
+            <span class="last-name">Begum</span>
+          </h1>
+
+          <p class="hero-tagline">
+            Problem Solver · UI/UX Designer · Aspiring Web Developer
+          </p>
+
+          <p class="hero-bio">
+            I'm Naeema Begum, a 3rd Year BSc Software Engineering student
+            passionate about building real-world solutions with C, C++, Python,
+            Java, and SQL. I've solved 290+ Codeforces problems and built 9+
+            projects including a voice-based Android app for elderly care.
+            I'm also skilled in UI/UX Design (Figma) and currently learning
+            Web Development (HTML, CSS, PHP).
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">290<span>+</span></div>
+              <div class="stat-label">Codeforces Problems</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">9<span>+</span></div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5<span>+</span></div>
+              <div class="stat-label">Languages</div>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fas fa-folder-open"></i> View Projects
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: avatar -->
+        <div class="hero-image">
+          <div class="avatar-frame">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT SECTION
+    ============================================================ -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+          <p class="section-subtitle">A little background and what drives me</p>
+        </div>
+
+        <div class="about-grid">
+
+          <!-- Bio -->
+          <div class="about-text">
+            <p>
+              I'm a <strong>3rd Year BSc Software Engineering student</strong>
+              (6th Semester) with a deep interest in problem-solving and building
+              useful software. I've solved over
+              <strong>290 Codeforces problems</strong> and built
+              <strong>9+ projects</strong>, including
+              <em class="italic-accent">Aponjon</em> — a voice-based Android
+              app for elderly care.
+            </p>
+
+            <p>
+              Beyond coding, I enjoy
+              <span class="italic-accent">UI/UX design</span> using Figma,
+              where I focus on clean, modern, and user-friendly interfaces.
+              Currently, I'm expanding my web development skills with HTML, CSS,
+              and PHP, and I'm actively looking for internships.
+            </p>
+
+            <p>
+              <i class="fas fa-bullseye" style="color:var(--teal); margin-right:8px;"></i>
+              <strong>Goal:</strong> Become a well-rounded software engineer
+              who designs and builds meaningful digital products.
+            </p>
+
+            <div class="about-meta">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Sylhet, Bangladesh</span>
+            </div>
+          </div>
+
+          <!-- Education card -->
+          <div class="edu-card">
+            <h3>
+              <i class="fas fa-graduation-cap"></i>
+              Education
+            </h3>
+
+            <div class="edu-item">
+              <div class="edu-icon"><i class="fas fa-university"></i></div>
+              <div class="edu-details">
+                <h4>BSc in Software Engineering</h4>
+                <p>3rd Year · 6th Semester · Expected 2028</p>
+              </div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-icon"><i class="fas fa-book"></i></div>
+              <div class="edu-details">
+                <h4>HSC Passed</h4>
+                <p>Completed in 2023</p>
+              </div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-icon"><i class="fas fa-book-open"></i></div>
+              <div class="edu-details">
+                <h4>SSC Passed</h4>
+                <p>Completed in 2021</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS SECTION
+    ============================================================ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p class="section-subtitle">Technologies and tools I work with</p>
+        </div>
+
+        <div class="skills-grid">
+
+          <!-- Programming -->
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Programming</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="skill-category">
+            <h3><i class="fas fa-globe"></i> Web Development</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">Responsive Design</span>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-category">
+            <h3><i class="fas fa-database"></i> Database</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">DBMS</span>
+            </div>
+          </div>
+
+          <!-- UI/UX Design -->
+          <div class="skill-category">
+            <h3><i class="fas fa-paint-brush"></i> UI/UX Design</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Wireframing</span>
+              <span class="skill-tag">Prototyping</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-category">
+            <h3><i class="fas fa-tools"></i> Tools</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Android Studio</span>
+            </div>
+          </div>
+
+          <!-- Concepts -->
+          <div class="skill-category">
+            <h3><i class="fas fa-brain"></i> Concepts</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">DSA</span>
+              <span class="skill-tag">OOP</span>
+              <span class="skill-tag">NLP</span>
+              <span class="skill-tag">SADP</span>
+              <span class="skill-tag">Code Testing</span>
+            </div>
+          </div>
+
+          <!-- Digital Marketing -->
+          <div class="skill-category">
+            <h3><i class="fas fa-bullhorn"></i> Digital Marketing</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">SEO</span>
+              <span class="skill-tag">Social Media</span>
+              <span class="skill-tag">Content Marketing</span>
+            </div>
+          </div>
+
+          <!-- Problem Solving -->
+          <div class="skill-category">
+            <h3><i class="fas fa-trophy"></i> Problem Solving</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">290+ Codeforces</span>
+              <span class="skill-tag">Algorithms</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS SECTION
+    ============================================================ -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projects</h2>
+          <p class="section-subtitle">9+ personal and academic projects</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- 1. Aponjon -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <h3>Aponjon – Elderly Care App</h3>
+            <p class="project-desc">
+              Voice-based emotional support Android app using voice recognition
+              and AI. (In progress)
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Android</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">AI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.dev/naeema05038-web/AponjonApp" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. Portfolio -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-id-card"></i></div>
+            <h3>Portfolio Website</h3>
+            <p class="project-desc">
+              Modern, responsive portfolio built with HTML and CSS.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web/portfolio" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. News Blog -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-newspaper"></i></div>
+            <h3>News Blog System</h3>
+            <p class="project-desc">
+              DBMS-based news blog with Python and MySQL. Includes user
+              authentication and full CRUD functionality.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web/news_blogsystem" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. AI Chatbot -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-robot"></i></div>
+            <h3>AI Chatbot</h3>
+            <p class="project-desc">
+              NLP-powered chatbot built with Python, NLTK, and Flask.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">NLTK</span>
+              <span class="tech-tag">Flask</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web/ai-chatbot" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 5. Mental Health NLP -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
+            <h3>Mental Health NLP System</h3>
+            <p class="project-desc">
+              Python-based sentiment analysis using pandas and scikit-learn.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">scikit-learn</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web/nlpproject" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 6. Hotel Management -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-hotel"></i></div>
+            <h3>Hotel Management System</h3>
+            <p class="project-desc">
+              Java-based hotel management with room booking, customer records,
+              and billing. Built for SADP coursework.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Swing</span>
+              <span class="tech-tag">SADP</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web/HotelManagement-New" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 7. SignBridge UI/UX -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-hands"></i></div>
+            <h3>SignBridge UI/UX Design</h3>
+            <p class="project-desc">
+              Complete UI/UX design in Figma for a sign language translation
+              application.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Wireframes</span>
+              <span class="tech-tag">Prototypes</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.figma.com/design/1XbdJhESEhlKJBenPGmUos/uiux?node-id=0-1&p=f&t=ohUeySZMJBDXdKAp-0" target="_blank" rel="noopener">
+                <i class="fab fa-figma"></i> Figma
+              </a>
+            </div>
+          </div>
+
+          <!-- 8. Additional Academic Projects -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-cubes"></i></div>
+            <h3>Academic Console Projects</h3>
+            <p class="project-desc">
+              Additional console and database applications built during
+              coursework using C++, Java, and SQL.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">SQL</span>
+            </div>
+            <div class="project-links">
+              <span class="no-link">
+                <i class="fas fa-layer-group"></i> Part of 9+ total projects
+              </span>
+            </div>
+          </div>
+
+          <!-- 9. Voice / AI Experiments -->
+          <div class="project-card">
+            <div class="project-icon"><i class="fas fa-microphone-alt"></i></div>
+            <h3>Voice & AI Experiments</h3>
+            <p class="project-desc">
+              Small experiments combining speech recognition, NLP, and
+              automation as part of ongoing learning.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">AI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naeema05038-web" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES SECTION
+    ============================================================ -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p class="section-subtitle">What I can offer while learning and growing</p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- 1. UI/UX -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h3>UI/UX Design</h3>
+            <div class="service-sub">Beginner – Intermediate</div>
+            <p class="service-desc">
+              I can create wireframes, simple prototypes, and clean UI layouts
+              using Figma. I focus on clean, modern, and user-friendly designs.
+            </p>
+          </div>
+
+          <!-- 2. Software Development -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Software Development</h3>
+            <div class="service-sub">Beginner – Intermediate</div>
+            <p class="service-desc">
+              I can build basic desktop and console applications in C, C++,
+              Python, and Java. I've completed 9+ projects including an
+              Android app.
+            </p>
+          </div>
+
+          <!-- 3. Database -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-database"></i></div>
+            <h3>Database Management</h3>
+            <div class="service-sub">Beginner – Intermediate</div>
+            <p class="service-desc">
+              I can design simple databases and write SQL queries using
+              MySQL and SQLite.
+            </p>
+          </div>
+
+          <!-- 4. Problem Solving -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <h3>Problem Solving</h3>
+            <div class="service-sub">Intermediate</div>
+            <p class="service-desc">
+              I've solved 290+ Codeforces problems and have a strong
+              foundation in DSA and algorithms.
+            </p>
+          </div>
+
+          <!-- 5. Web Development -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Web Development</h3>
+            <div class="service-sub">Beginner – Learning</div>
+            <p class="service-desc">
+              Currently learning HTML, CSS, and PHP to build responsive
+              websites.
+            </p>
+          </div>
+
+          <!-- 6. Digital Marketing -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Digital Marketing</h3>
+            <div class="service-sub">Beginner – Learning</div>
+            <p class="service-desc">
+              Learning SEO and Social Media Marketing to help projects
+              gain visibility.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+    ============================================================ -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p class="section-subtitle">
+            Let's connect — I'm open to internships and collaborations
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+
+          <!-- Left: Info -->
+          <div class="contact-info">
+            <h3><i class="fas fa-comment-dots" style="color:var(--teal);"></i> Get in touch</h3>
+            <p>Feel free to reach out through email or any social platform.</p>
+
+            <div class="contact-detail">
+              <div class="icon-box"><i class="fas fa-envelope"></i></div>
+              <a href="mailto:naeema05038@gmail.com">naeema05038@gmail.com</a>
+            </div>
+
+            <div class="contact-detail">
+              <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+              <span>Sylhet, Bangladesh</span>
+            </div>
+
+            <div class="contact-detail">
+              <div class="icon-box"><i class="fab fa-github"></i></div>
+              <a href="https://github.com/naeema05038-web" target="_blank" rel="noopener">
+                github.com/naeema05038-web
+              </a>
+            </div>
+
+            <div class="contact-detail">
+              <div class="icon-box"><i class="fas fa-code"></i></div>
+              <a href="https://codeforces.com/profile/naeema1234" target="_blank" rel="noopener">
+                codeforces.com/profile/naeema1234
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Form (visual only) -->
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input id="name" type="text" placeholder="Enter your name" aria-label="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input id="email" type="email" placeholder="you@example.com" aria-label="Email address">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Write your message here..." aria-label="Your message"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+
+            <p class="form-note">
+              <i class="fas fa-info-circle"></i>
+              This form is a visual demo — please reach out via email.
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Naeema Begum · Built with <i class="fas fa-heart"></i> using HTML &amp; CSS</p>
+      <p>
+        <i class="fas fa-code"></i>
+        Problem Solver · UI/UX Designer · Aspiring Web Developer
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
